@@ -146,6 +146,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCk-Um-zHG">
+                                <rect key="frame" x="147.66666666666666" y="621" width="118.99999999999997" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Restart Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetGamme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rvr-J0-VV0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -153,7 +163,9 @@
                             <constraint firstItem="8xJ-wy-3lG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ywc-Y8-o5x"/>
                             <constraint firstItem="ESh-84-8V1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="10" id="i2N-Dz-Vp6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ESh-84-8V1" secondAttribute="bottom" constant="12" id="idN-Ek-Bec"/>
+                            <constraint firstItem="jCk-Um-zHG" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ESh-84-8V1" secondAttribute="top" constant="8" symbolic="YES" id="ke7-sg-UEN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8xJ-wy-3lG" secondAttribute="trailing" constant="20" id="vE1-iz-b0w"/>
+                            <constraint firstItem="jCk-Um-zHG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xOP-IG-PH4"/>
                             <constraint firstItem="8xJ-wy-3lG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zy1-bu-vZ6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -176,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.86956521739131" y="82.366071428571431"/>
+            <point key="canvasLocation" x="160.86956521739131" y="82.33695652173914"/>
         </scene>
     </scenes>
 </document>

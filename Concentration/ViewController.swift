@@ -18,14 +18,40 @@ class ViewController: UIViewController {
     
     private(set) var flipCount = 0{
         didSet{
-            flipCountLabel.text = "Flips : \(flipCount)"
+          setFlipCountLebel()
         }
     }
     
-    @IBOutlet private var cardButtons: [UIButton]!
-    @IBOutlet private weak var flipCountLabel: UILabel!
-    private var emojiChoices: Array<String> = ["🎃","👻","🤡","💩","👹","💂🏼‍♂️","👀","👑","🦋"]
+    private func setFlipCountLebel(){
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strokeWidth : 5.0,
+            .strokeColor : #colorLiteral(red: 0.4457350385, green: 0.848938609, blue: 1, alpha: 1)
+            
+        ]
+        let attributedString = NSAttributedString(string: "Flips : \(flipCount)", attributes: attributes)
+        //flipCountLabel.text = "Flips : \(flipCount)"
+        flipCountLabel.attributedText = attributedString
+    }
     
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            setFlipCountLebel()
+        }
+    }
+    private var emojiChoices: Array<String> = ["🎃","👻","🤡","💩","👹","💂🏼‍♂️","👀","👑","🦋"]
+    private var emojiChoicesAll: Array<String> = ["🎃","👻","🤡","💩","👹","💂🏼‍♂️","👀","👑","🦋"]
+    
+    @IBAction func resetGamme(_ sender: UIButton) {
+         print("reset clicked!!")
+        game.resetCards()
+        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCard )
+        emoji.removeAll()
+        emojiChoices.removeAll()
+        emojiChoices = emojiChoicesAll
+        updateViewFromModel()
+        flipCount = 0
+    }
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender){

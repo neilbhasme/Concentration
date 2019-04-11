@@ -14,17 +14,22 @@ class Concentration {
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp{
-                    if foundIndex == nil{
-                        foundIndex = index
-                    } else{
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            return cards.indices.filter{ cards[$0].isFaceUp}.oneAndOnly  //minuses below with collection only
+            
+       //     let faceUpCardIndices = cards.indices.filter{ cards[$0].isFaceUp}  this and next line without collections
+        //    return faceUpCardIndices.count == 1 ? faceUpCardIndices.first : nil
+            
+//            var foundIndex: Int?
+//            for index in cards.indices {
+//                if cards[index].isFaceUp{
+//                    if foundIndex == nil{
+//                        foundIndex = index
+//                    } else{
+//                        return nil
+//                    }
+//                }
+//            }
+//            return foundIndex
         }
         set {
             for  index in cards.indices{
@@ -51,6 +56,10 @@ class Concentration {
         }
     }
     
+    func resetCards(){
+        cards.removeAll()
+    }
+    
     init(numberOfPairsOfCards:Int) {
         
         assert(numberOfPairsOfCards > 0, "Concentration.init (\(numberOfPairsOfCards)): you must have atleast one pair of cards")
@@ -60,5 +69,10 @@ class Concentration {
             cards += [card, card]
         }
         cards.shuffle()  //does this work? apparently it does..still check
+    }
+}
+extension Collection{
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
     }
 }
