@@ -14,7 +14,7 @@ class ConcentrationThemeChooserViewController: UIViewController {
     let themes = [
         "Faces": "🤯😬😰😱😳🤪😵😡😠🤬😷🤒🤕🤢🤮🤧😇🤠🤡🤥🤫🤭🧐🤓",
         "Animals": "🙈🙉🙊💥💦💨💫🐵🐒🦍🐶🐕🐩🐺🦊🐱🐈🦁🐯🐅🐆",
-        "Sports": "😀😁😂🤣😃😄😅😆😉😊😋😎😍😘😗😙😚☺🙂🤗🤩🤔🤨😐"
+        "Sports": "⚽️🏀🏈⚾️🥎🎾🏐🏓🏑🥍🏏🥋⛸🏋🏽‍♀️⛷🤸🏿‍♂️🏊🏼‍♀️🚵🏼‍♀️"
     ]
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -24,9 +24,9 @@ class ConcentrationThemeChooserViewController: UIViewController {
         if segue.identifier == "Choose Theme" {
                 if let themeName = (sender as? UIButton)?.currentTitle, let theme = themes[themeName] {
                     if let cvc = segue.destination as? ConcentrationViewController {
-                        print(theme)
-                        cvc.theme?.append(theme)
-                        print(cvc.theme as Any)
+                        var something = [String]()
+                        something = [theme]
+                        cvc.theme = something
                     }
                }
            

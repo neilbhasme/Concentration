@@ -42,7 +42,10 @@ class ConcentrationViewController: UIViewController {
     
     var theme: Array<String>? {
         didSet {
-            emojiChoices = theme ?? ["🤯😬😰😱😳🤪😵😡😠🤬😷🤒🤕🤢🤮🤧😇🤠🤡🤥🤫🤭🧐🤓"]
+            //print(theme)
+            let eachEmojiInArray = theme![0].map( {String($0) } )
+            emojiChoices = eachEmojiInArray
+            emojiChoicesAll = eachEmojiInArray
             emoji = [:] //resetting or actually creating empty dictionary
             updateViewFromModel()
         }
