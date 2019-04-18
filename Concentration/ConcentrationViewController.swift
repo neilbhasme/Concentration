@@ -25,7 +25,7 @@ class ConcentrationViewController: UIViewController {
     private func setFlipCountLebel(){
         let attributes: [NSAttributedString.Key: Any] = [
             .strokeWidth : 5.0,
-            .strokeColor : #colorLiteral(red: 0.4457350385, green: 0.848938609, blue: 1, alpha: 1)
+            .strokeColor : #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
             
         ]
         let attributedString = NSAttributedString(string: "Flips : \(flipCount)", attributes: attributes)
@@ -39,6 +39,15 @@ class ConcentrationViewController: UIViewController {
             setFlipCountLebel()
         }
     }
+    
+    var theme: Array<String>? {
+        didSet {
+            emojiChoices = theme ?? ["🤯😬😰😱😳🤪😵😡😠🤬😷🤒🤕🤢🤮🤧😇🤠🤡🤥🤫🤭🧐🤓"]
+            emoji = [:] //resetting or actually creating empty dictionary
+            updateViewFromModel()
+        }
+    }
+    
     private var emojiChoices: Array<String> = ["🎃","👻","🤡","💩","👹","💂🏼‍♂️","👀","👑","🦋"]
     private var emojiChoicesAll: Array<String> = ["🎃","👻","🤡","💩","👹","💂🏼‍♂️","👀","👑","🦋"]
     
@@ -66,15 +75,17 @@ class ConcentrationViewController: UIViewController {
     }
  
     private func updateViewFromModel() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emogi (for: card), for: UIControl.State.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            } else {
-                button.setTitle("", for: UIControl.State.normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        if cardButtons != nil {
+            for index in cardButtons.indices {
+                let button = cardButtons[index]
+                let card = game.cards[index]
+                if card.isFaceUp {
+                    button.setTitle(emogi (for: card), for: UIControl.State.normal)
+                    button.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+                } else {
+                    button.setTitle("", for: UIControl.State.normal)
+                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 0.4457350385, green: 0.848938609, blue: 1, alpha: 1)
+                }
             }
         }
     }
